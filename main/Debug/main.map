@@ -197,7 +197,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x5a2
+.text           0x00000000      0x5ce
  *(.vectors)
  .vectors       0x00000000       0x54 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
                 0x00000000                __vector_default
@@ -331,13 +331,13 @@ END GROUP
  .text.setPutCodeCodeMode
                 0x00000402       0x22 main.o
                 0x00000402                setPutCodeCodeMode
- .text.main     0x00000424      0x17a main.o
+ .text.main     0x00000424      0x1a6 main.o
                 0x00000424                main
-                0x0000059e                . = ALIGN (0x2)
+                0x000005ca                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000059e        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x0000059e                _exit
-                0x0000059e                exit
+ .fini9         0x000005ca        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x000005ca                _exit
+                0x000005ca                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -356,11 +356,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000059e        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x000005ca        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000005a2                _etext = .
+                0x000005ce                _etext = .
 
-.data           0x00800060       0x4e load address 0x000005a2
+.data           0x00800060       0x72 load address 0x000005ce
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -372,44 +372,43 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800072       0x3b main.o
+                0x00800072       0x60 main.o
  *(.gnu.linkonce.d*)
-                0x008000ae                . = ALIGN (0x2)
- *fill*         0x008000ad        0x1 
-                0x008000ae                _edata = .
-                0x008000ae                PROVIDE (__data_end, .)
+                0x008000d2                . = ALIGN (0x2)
+                0x008000d2                _edata = .
+                0x008000d2                PROVIDE (__data_end, .)
 
-.bss            0x008000ae        0xf
-                0x008000ae                PROVIDE (__bss_start, .)
+.bss            0x008000d2        0xf
+                0x008000d2                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.witchNumber
-                0x008000ae        0x1 main.o
-                0x008000ae                witchNumber
+                0x008000d2        0x1 main.o
+                0x008000d2                witchNumber
  .bss.KEYBOARD_PIN
-                0x008000af        0x2 main.o
-                0x008000af                KEYBOARD_PIN
+                0x008000d3        0x2 main.o
+                0x008000d3                KEYBOARD_PIN
  .bss.KEYBOARD_PORT
-                0x008000b1        0x2 main.o
-                0x008000b1                KEYBOARD_PORT
+                0x008000d5        0x2 main.o
+                0x008000d5                KEYBOARD_PORT
  .bss.KEYBOARD_DDR
-                0x008000b3        0x2 main.o
-                0x008000b3                KEYBOARD_DDR
+                0x008000d7        0x2 main.o
+                0x008000d7                KEYBOARD_DDR
  *(COMMON)
- COMMON         0x008000b5        0x8 main.o
-                0x008000b5                my_servo
-                0x008000b8                my_codeMode
-                0x008000b9                writeCode
-                0x008000bd                PROVIDE (__bss_end, .)
-                0x000005a2                __data_load_start = LOADADDR (.data)
-                0x000005f0                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008000d9        0x8 main.o
+                0x008000d9                my_servo
+                0x008000dc                my_codeMode
+                0x008000dd                writeCode
+                0x008000e1                PROVIDE (__bss_end, .)
+                0x000005ce                __data_load_start = LOADADDR (.data)
+                0x00000640                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008000bd        0x0
-                0x008000bd                PROVIDE (__noinit_start, .)
+.noinit         0x008000e1        0x0
+                0x008000e1                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008000bd                PROVIDE (__noinit_end, .)
-                0x008000bd                _end = .
-                0x008000bd                PROVIDE (__heap_start, .)
+                0x008000e1                PROVIDE (__noinit_end, .)
+                0x008000e1                _end = .
+                0x008000e1                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -476,17 +475,17 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xdfe
+.debug_info     0x00000000      0xe9a
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0xdfe main.o
+ .debug_info    0x00000000      0xe9a main.o
 
 .debug_abbrev   0x00000000      0x26b
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x26b main.o
 
-.debug_line     0x00000000      0x449
+.debug_line     0x00000000      0x451
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x449 main.o
+ .debug_line    0x00000000      0x451 main.o
 
 .debug_frame    0x00000000      0x1ac
  *(.debug_frame)
@@ -497,9 +496,9 @@ END GROUP
  .debug_str     0x00000000      0x374 main.o
                                 0x3c6 (size before relaxing)
 
-.debug_loc      0x00000000      0x766
+.debug_loc      0x00000000      0x78e
  *(.debug_loc)
- .debug_loc     0x00000000      0x766 main.o
+ .debug_loc     0x00000000      0x78e main.o
 
 .debug_macinfo
  *(.debug_macinfo)

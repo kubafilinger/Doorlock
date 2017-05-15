@@ -86,6 +86,14 @@ int main(void)
 							LCD_GoTo(0, 1);
 							LCD_WriteText("DAGA <3");
 						}
+						else if(goodCode("1997"))
+						{
+							LCD_Clear();
+							LCD_Home();
+							LCD_WriteText("Pedal od roweru");
+							LCD_GoTo(0, 1);
+							LCD_WriteText("Zakaz wstepu!!!");
+						}
 						else
 						{
 							LCD_Clear();

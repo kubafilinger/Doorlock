@@ -3,29 +3,29 @@ main.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000005a2  00000000  00000000  00000094  2**1
+  0 .text         000005ce  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000004e  00800060  000005a2  00000636  2**0
+  1 .data         00000072  00800060  000005ce  00000662  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000f  008000ae  008000ae  00000684  2**0
+  2 .bss          0000000f  008000d2  008000d2  000006d4  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000684  2**0
+  3 .comment      00000030  00000000  00000000  000006d4  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 000000d0  00000000  00000000  000006b4  2**0
+  4 .debug_aranges 000000d0  00000000  00000000  00000704  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000dfe  00000000  00000000  00000784  2**0
+  5 .debug_info   00000e9a  00000000  00000000  000007d4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000026b  00000000  00000000  00001582  2**0
+  6 .debug_abbrev 0000026b  00000000  00000000  0000166e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000449  00000000  00000000  000017ed  2**0
+  7 .debug_line   00000451  00000000  00000000  000018d9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000001ac  00000000  00000000  00001c38  2**2
+  8 .debug_frame  000001ac  00000000  00000000  00001d2c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000374  00000000  00000000  00001de4  2**0
+  9 .debug_str    00000374  00000000  00000000  00001ed8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000766  00000000  00000000  00002158  2**0
+ 10 .debug_loc    0000078e  00000000  00000000  0000224c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000c0  00000000  00000000  000028be  2**0
+ 11 .debug_ranges 000000c0  00000000  00000000  000029da  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -65,18 +65,18 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e2 ea       	ldi	r30, 0xA2	; 162
+  66:	ee ec       	ldi	r30, 0xCE	; 206
   68:	f5 e0       	ldi	r31, 0x05	; 5
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
-  70:	ae 3a       	cpi	r26, 0xAE	; 174
+  70:	a2 3d       	cpi	r26, 0xD2	; 210
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
 
 00000076 <__do_clear_bss>:
   76:	20 e0       	ldi	r18, 0x00	; 0
-  78:	ae ea       	ldi	r26, 0xAE	; 174
+  78:	a2 ed       	ldi	r26, 0xD2	; 210
   7a:	b0 e0       	ldi	r27, 0x00	; 0
   7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
@@ -84,11 +84,11 @@ Disassembly of section .text:
   7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-  80:	ad 3b       	cpi	r26, 0xBD	; 189
+  80:	a1 3e       	cpi	r26, 0xE1	; 225
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 12 02 	call	0x424	; 0x424 <main>
-  8a:	0c 94 cf 02 	jmp	0x59e	; 0x59e <_exit>
+  8a:	0c 94 e5 02 	jmp	0x5ca	; 0x5ca <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -384,22 +384,22 @@ LCD_WriteCommand(HD44780_DISPLAY_ONOFF | HD44780_DISPLAY_ON | HD44780_CURSOR_OFF
 void setPorts(volatile uint8_t * ddr, volatile uint8_t * port, volatile uint8_t * pin) {
 	
 	KEYBOARD_DDR = ddr;
- 1b6:	90 93 b4 00 	sts	0x00B4, r25
- 1ba:	80 93 b3 00 	sts	0x00B3, r24
+ 1b6:	90 93 d8 00 	sts	0x00D8, r25
+ 1ba:	80 93 d7 00 	sts	0x00D7, r24
 	KEYBOARD_PORT = port;
- 1be:	70 93 b2 00 	sts	0x00B2, r23
- 1c2:	60 93 b1 00 	sts	0x00B1, r22
+ 1be:	70 93 d6 00 	sts	0x00D6, r23
+ 1c2:	60 93 d5 00 	sts	0x00D5, r22
 	KEYBOARD_PIN = pin;
- 1c6:	50 93 b0 00 	sts	0x00B0, r21
- 1ca:	40 93 af 00 	sts	0x00AF, r20
+ 1c6:	50 93 d4 00 	sts	0x00D4, r21
+ 1ca:	40 93 d3 00 	sts	0x00D3, r20
 	
 	*KEYBOARD_DDR = 0b00001111;
  1ce:	2f e0       	ldi	r18, 0x0F	; 15
  1d0:	fc 01       	movw	r30, r24
  1d2:	20 83       	st	Z, r18
 	*KEYBOARD_PORT = 0b11111111;
- 1d4:	e0 91 b1 00 	lds	r30, 0x00B1
- 1d8:	f0 91 b2 00 	lds	r31, 0x00B2
+ 1d4:	e0 91 d5 00 	lds	r30, 0x00D5
+ 1d8:	f0 91 d6 00 	lds	r31, 0x00D6
  1dc:	8f ef       	ldi	r24, 0xFF	; 255
  1de:	80 83       	st	Z, r24
  1e0:	08 95       	ret
@@ -419,8 +419,8 @@ char pushKey() {
 		*KEYBOARD_PORT &= ~(1 << i);
  1ea:	c1 e0       	ldi	r28, 0x01	; 1
  1ec:	d0 e0       	ldi	r29, 0x00	; 0
- 1ee:	e0 91 b1 00 	lds	r30, 0x00B1
- 1f2:	f0 91 b2 00 	lds	r31, 0x00B2
+ 1ee:	e0 91 d5 00 	lds	r30, 0x00D5
+ 1f2:	f0 91 d6 00 	lds	r31, 0x00D6
  1f6:	80 81       	ld	r24, Z
  1f8:	de 01       	movw	r26, r28
  1fa:	06 2e       	mov	r0, r22
@@ -437,8 +437,8 @@ char pushKey() {
 		for(j = 0; j < 4; j++)
 		{
 			if(!(*KEYBOARD_PIN & (1 << (j + 4)))) // jest stan LOW
- 20e:	e0 91 af 00 	lds	r30, 0x00AF
- 212:	f0 91 b0 00 	lds	r31, 0x00B0
+ 20e:	e0 91 d3 00 	lds	r30, 0x00D3
+ 212:	f0 91 d4 00 	lds	r31, 0x00D4
  216:	80 81       	ld	r24, Z
  218:	84 ff       	sbrs	r24, 4
  21a:	0f c0       	rjmp	.+30     	; 0x23a <pushKey+0x58>
@@ -504,8 +504,8 @@ char pushKey() {
 				
 				_delay_ms(20);
 				while(!(*KEYBOARD_PIN & (1 << (j + 4))));
- 26e:	e0 91 af 00 	lds	r30, 0x00AF
- 272:	f0 91 b0 00 	lds	r31, 0x00B0
+ 26e:	e0 91 d3 00 	lds	r30, 0x00D3
+ 272:	f0 91 d4 00 	lds	r31, 0x00D4
  276:	41 e0       	ldi	r20, 0x01	; 1
  278:	50 e0       	ldi	r21, 0x00	; 0
  27a:	ba 01       	movw	r22, r20
@@ -539,8 +539,8 @@ char pushKey() {
 		}
 
 		*KEYBOARD_PORT |= (1 << i);
- 2a0:	e0 91 b1 00 	lds	r30, 0x00B1
- 2a4:	f0 91 b2 00 	lds	r31, 0x00B2
+ 2a0:	e0 91 d5 00 	lds	r30, 0x00D5
+ 2a4:	f0 91 d6 00 	lds	r31, 0x00D6
  2a8:	80 81       	ld	r24, Z
  2aa:	a8 2b       	or	r26, r24
  2ac:	a0 83       	st	Z, r26
@@ -615,14 +615,14 @@ int goodCode(char *forwardCode)
 		if(forwardCode[i] != writeCode[i])
  2f4:	fc 01       	movw	r30, r24
  2f6:	30 81       	ld	r19, Z
- 2f8:	20 91 b9 00 	lds	r18, 0x00B9
+ 2f8:	20 91 dd 00 	lds	r18, 0x00DD
  2fc:	32 13       	cpse	r19, r18
  2fe:	0e c0       	rjmp	.+28     	; 0x31c <goodCode+0x28>
  300:	dc 01       	movw	r26, r24
  302:	11 96       	adiw	r26, 0x01	; 1
- 304:	ea eb       	ldi	r30, 0xBA	; 186
+ 304:	ee ed       	ldi	r30, 0xDE	; 222
  306:	f0 e0       	ldi	r31, 0x00	; 0
- 308:	8d eb       	ldi	r24, 0xBD	; 189
+ 308:	81 ee       	ldi	r24, 0xE1	; 225
  30a:	90 e0       	ldi	r25, 0x00	; 0
  30c:	3d 91       	ld	r19, X+
  30e:	21 91       	ld	r18, Z+
@@ -660,13 +660,13 @@ void clearCode()
 	
 	for(i = 0; i < CODE_LENGTH; i++)
 	writeCode[i] = 0;
- 32e:	10 92 b9 00 	sts	0x00B9, r1
- 332:	10 92 ba 00 	sts	0x00BA, r1
- 336:	10 92 bb 00 	sts	0x00BB, r1
- 33a:	10 92 bc 00 	sts	0x00BC, r1
+ 32e:	10 92 dd 00 	sts	0x00DD, r1
+ 332:	10 92 de 00 	sts	0x00DE, r1
+ 336:	10 92 df 00 	sts	0x00DF, r1
+ 33a:	10 92 e0 00 	sts	0x00E0, r1
 	
 	witchNumber = 0;
- 33e:	10 92 ae 00 	sts	0x00AE, r1
+ 33e:	10 92 d2 00 	sts	0x00D2, r1
  342:	08 95       	ret
 
 00000344 <moveServo>:
@@ -684,7 +684,7 @@ void moveServo()
 		PORTB |= (1 << SERVO_PIN);
 		
 		if(my_servo.servo_time == SERVO_MIN)
- 348:	e5 eb       	ldi	r30, 0xB5	; 181
+ 348:	e9 ed       	ldi	r30, 0xD9	; 217
  34a:	f0 e0       	ldi	r31, 0x00	; 0
 	else
 	time = 1000;
@@ -771,12 +771,12 @@ void openDoor()
 	my_servo.servo_time = SERVO_MIN; // w us
  3a0:	80 e9       	ldi	r24, 0x90	; 144
  3a2:	91 e0       	ldi	r25, 0x01	; 1
- 3a4:	90 93 b6 00 	sts	0x00B6, r25
- 3a8:	80 93 b5 00 	sts	0x00B5, r24
+ 3a4:	90 93 da 00 	sts	0x00DA, r25
+ 3a8:	80 93 d9 00 	sts	0x00D9, r24
 	moveServo();
  3ac:	0e 94 a2 01 	call	0x344	; 0x344 <moveServo>
 	my_servo.servo_position = OPEN;
- 3b0:	10 92 b7 00 	sts	0x00B7, r1
+ 3b0:	10 92 db 00 	sts	0x00DB, r1
  3b4:	08 95       	ret
 
 000003b6 <closeDoor>:
@@ -787,15 +787,15 @@ void closeDoor()
 	my_servo.servo_time = SERVO_MAX; // w us
  3b6:	80 e2       	ldi	r24, 0x20	; 32
  3b8:	93 e0       	ldi	r25, 0x03	; 3
- 3ba:	90 93 b6 00 	sts	0x00B6, r25
- 3be:	80 93 b5 00 	sts	0x00B5, r24
+ 3ba:	90 93 da 00 	sts	0x00DA, r25
+ 3be:	80 93 d9 00 	sts	0x00D9, r24
 	moveServo();
  3c2:	0e 94 a2 01 	call	0x344	; 0x344 <moveServo>
 	my_servo.servo_position = CLOSE;
  3c6:	81 e0       	ldi	r24, 0x01	; 1
- 3c8:	80 93 b7 00 	sts	0x00B7, r24
+ 3c8:	80 93 db 00 	sts	0x00DB, r24
 	my_codeMode = putCode;
- 3cc:	10 92 b8 00 	sts	0x00B8, r1
+ 3cc:	10 92 dc 00 	sts	0x00DC, r1
 	
 	off_led(LED_GREEN);
  3d0:	82 e0       	ldi	r24, 0x02	; 2
@@ -888,13 +888,13 @@ int main(void)
 	my_servo.servo_time = 1000;
  44c:	88 ee       	ldi	r24, 0xE8	; 232
  44e:	93 e0       	ldi	r25, 0x03	; 3
- 450:	90 93 b6 00 	sts	0x00B6, r25
- 454:	80 93 b5 00 	sts	0x00B5, r24
+ 450:	90 93 da 00 	sts	0x00DA, r25
+ 454:	80 93 d9 00 	sts	0x00D9, r24
 	my_servo.servo_position = 0;
- 458:	10 92 b7 00 	sts	0x00B7, r1
+ 458:	10 92 db 00 	sts	0x00DB, r1
 
 	setPutCodeCodeMode(&my_codeMode);
- 45c:	88 eb       	ldi	r24, 0xB8	; 184
+ 45c:	8c ed       	ldi	r24, 0xDC	; 220
  45e:	90 e0       	ldi	r25, 0x00	; 0
  460:	0e 94 01 02 	call	0x402	; 0x402 <setPutCodeCodeMode>
 
@@ -912,14 +912,14 @@ int main(void)
  46e:	1e c0       	rjmp	.+60     	; 0x4ac <__stack+0x4d>
 		{
 			if(my_codeMode == putCode)
- 470:	80 91 b8 00 	lds	r24, 0x00B8
+ 470:	80 91 dc 00 	lds	r24, 0x00DC
  474:	81 11       	cpse	r24, r1
  476:	07 c0       	rjmp	.+14     	; 0x486 <__stack+0x27>
 			{
 				openDoor();
  478:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <openDoor>
 				setOpenCodeMode(&my_codeMode);
- 47c:	88 eb       	ldi	r24, 0xB8	; 184
+ 47c:	8c ed       	ldi	r24, 0xDC	; 220
  47e:	90 e0       	ldi	r25, 0x00	; 0
  480:	0e 94 ef 01 	call	0x3de	; 0x3de <setOpenCodeMode>
  484:	08 c0       	rjmp	.+16     	; 0x496 <__stack+0x37>
@@ -931,7 +931,7 @@ int main(void)
 				closeDoor();
  48a:	0e 94 db 01 	call	0x3b6	; 0x3b6 <closeDoor>
 				setPutCodeCodeMode(&my_codeMode);
- 48e:	88 eb       	ldi	r24, 0xB8	; 184
+ 48e:	8c ed       	ldi	r24, 0xDC	; 220
  490:	90 e0       	ldi	r25, 0x00	; 0
  492:	0e 94 01 02 	call	0x402	; 0x402 <setPutCodeCodeMode>
 	#else
@@ -970,19 +970,19 @@ int main(void)
  4ba:	c0 f6       	brcc	.-80     	; 0x46c <__stack+0xd>
  4bc:	8a 32       	cpi	r24, 0x2A	; 42
  4be:	b1 f2       	breq	.-84     	; 0x46c <__stack+0xd>
- 4c0:	58 c0       	rjmp	.+176    	; 0x572 <__stack+0x113>
+ 4c0:	6e c0       	rjmp	.+220    	; 0x59e <__stack+0x13f>
  4c2:	84 34       	cpi	r24, 0x44	; 68
  4c4:	09 f0       	breq	.+2      	; 0x4c8 <__stack+0x69>
- 4c6:	55 c0       	rjmp	.+170    	; 0x572 <__stack+0x113>
+ 4c6:	6b c0       	rjmp	.+214    	; 0x59e <__stack+0x13f>
 					break;
 				}
 
 				case 'D': // OK (OPEN, CLOSE)
 				{
 					if(my_codeMode == putCode)
- 4c8:	80 91 b8 00 	lds	r24, 0x00B8
+ 4c8:	80 91 dc 00 	lds	r24, 0x00DC
  4cc:	81 11       	cpse	r24, r1
- 4ce:	47 c0       	rjmp	.+142    	; 0x55e <__stack+0xff>
+ 4ce:	5d c0       	rjmp	.+186    	; 0x58a <__stack+0x12b>
 					{
 						if(goodCode(code))
  4d0:	80 91 60 00 	lds	r24, 0x0060
@@ -994,10 +994,10 @@ int main(void)
 							openDoor();
  4e0:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <openDoor>
 							setOpenCodeMode(&my_codeMode);
- 4e4:	88 eb       	ldi	r24, 0xB8	; 184
+ 4e4:	8c ed       	ldi	r24, 0xDC	; 220
  4e6:	90 e0       	ldi	r25, 0x00	; 0
  4e8:	0e 94 ef 01 	call	0x3de	; 0x3de <setOpenCodeMode>
- 4ec:	35 c0       	rjmp	.+106    	; 0x558 <__stack+0xf9>
+ 4ec:	4b c0       	rjmp	.+150    	; 0x584 <__stack+0x125>
 						}
 						else if(goodCode("2580"))
  4ee:	81 e8       	ldi	r24, 0x81	; 129
@@ -1009,7 +1009,7 @@ int main(void)
 							openDoor();
  4fa:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <openDoor>
 							setOpenCodeMode(&my_codeMode);
- 4fe:	88 eb       	ldi	r24, 0xB8	; 184
+ 4fe:	8c ed       	ldi	r24, 0xDC	; 220
  500:	90 e0       	ldi	r25, 0x00	; 0
  502:	0e 94 ef 01 	call	0x3de	; 0x3de <setOpenCodeMode>
 							LCD_Clear();
@@ -1033,86 +1033,110 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  51c:	82 e9       	ldi	r24, 0x92	; 146
  51e:	90 e0       	ldi	r25, 0x00	; 0
  520:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
- 524:	19 c0       	rjmp	.+50     	; 0x558 <__stack+0xf9>
+ 524:	2f c0       	rjmp	.+94     	; 0x584 <__stack+0x125>
+						}
+						else if(goodCode("1997"))
+ 526:	8a e9       	ldi	r24, 0x9A	; 154
+ 528:	90 e0       	ldi	r25, 0x00	; 0
+ 52a:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <goodCode>
+ 52e:	89 2b       	or	r24, r25
+ 530:	81 f0       	breq	.+32     	; 0x552 <__stack+0xf3>
+						{
+							LCD_Clear();
+ 532:	0e 94 88 00 	call	0x110	; 0x110 <LCD_Clear>
+							LCD_Home();
+ 536:	0e 94 92 00 	call	0x124	; 0x124 <LCD_Home>
+							LCD_WriteText("Pedal od roweru");
+ 53a:	8f e9       	ldi	r24, 0x9F	; 159
+ 53c:	90 e0       	ldi	r25, 0x00	; 0
+ 53e:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
+ 542:	80 ec       	ldi	r24, 0xC0	; 192
+ 544:	0e 94 71 00 	call	0xe2	; 0xe2 <LCD_WriteCommand>
+							LCD_GoTo(0, 1);
+							LCD_WriteText("Zakaz wstepu!!!");
+ 548:	8f ea       	ldi	r24, 0xAF	; 175
+ 54a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
+ 550:	19 c0       	rjmp	.+50     	; 0x584 <__stack+0x125>
 						}
 						else
 						{
 							LCD_Clear();
- 526:	0e 94 88 00 	call	0x110	; 0x110 <LCD_Clear>
+ 552:	0e 94 88 00 	call	0x110	; 0x110 <LCD_Clear>
 							LCD_Home();
- 52a:	0e 94 92 00 	call	0x124	; 0x124 <LCD_Home>
+ 556:	0e 94 92 00 	call	0x124	; 0x124 <LCD_Home>
 							LCD_WriteText("WRONG CODE!");
- 52e:	8a e9       	ldi	r24, 0x9A	; 154
- 530:	90 e0       	ldi	r25, 0x00	; 0
- 532:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
- 536:	2f ef       	ldi	r18, 0xFF	; 255
- 538:	8d e3       	ldi	r24, 0x3D	; 61
- 53a:	99 e4       	ldi	r25, 0x49	; 73
- 53c:	21 50       	subi	r18, 0x01	; 1
- 53e:	80 40       	sbci	r24, 0x00	; 0
- 540:	90 40       	sbci	r25, 0x00	; 0
- 542:	e1 f7       	brne	.-8      	; 0x53c <__stack+0xdd>
- 544:	00 c0       	rjmp	.+0      	; 0x546 <__stack+0xe7>
- 546:	00 00       	nop
+ 55a:	8f eb       	ldi	r24, 0xBF	; 191
+ 55c:	90 e0       	ldi	r25, 0x00	; 0
+ 55e:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
+ 562:	2f ef       	ldi	r18, 0xFF	; 255
+ 564:	8d e3       	ldi	r24, 0x3D	; 61
+ 566:	99 e4       	ldi	r25, 0x49	; 73
+ 568:	21 50       	subi	r18, 0x01	; 1
+ 56a:	80 40       	sbci	r24, 0x00	; 0
+ 56c:	90 40       	sbci	r25, 0x00	; 0
+ 56e:	e1 f7       	brne	.-8      	; 0x568 <__stack+0x109>
+ 570:	00 c0       	rjmp	.+0      	; 0x572 <__stack+0x113>
+ 572:	00 00       	nop
 							_delay_ms(3000);
 							LCD_Clear();
- 548:	0e 94 88 00 	call	0x110	; 0x110 <LCD_Clear>
+ 574:	0e 94 88 00 	call	0x110	; 0x110 <LCD_Clear>
 							LCD_Home();
- 54c:	0e 94 92 00 	call	0x124	; 0x124 <LCD_Home>
+ 578:	0e 94 92 00 	call	0x124	; 0x124 <LCD_Home>
 							LCD_WriteText("PIN: ");
- 550:	8b e7       	ldi	r24, 0x7B	; 123
- 552:	90 e0       	ldi	r25, 0x00	; 0
- 554:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
+ 57c:	8b e7       	ldi	r24, 0x7B	; 123
+ 57e:	90 e0       	ldi	r25, 0x00	; 0
+ 580:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
 						}
 						
 						clearCode();
- 558:	0e 94 97 01 	call	0x32e	; 0x32e <clearCode>
- 55c:	87 cf       	rjmp	.-242    	; 0x46c <__stack+0xd>
+ 584:	0e 94 97 01 	call	0x32e	; 0x32e <clearCode>
+ 588:	71 cf       	rjmp	.-286    	; 0x46c <__stack+0xd>
 					}
 					else if(my_codeMode == open)
- 55e:	81 30       	cpi	r24, 0x01	; 1
- 560:	09 f0       	breq	.+2      	; 0x564 <__stack+0x105>
- 562:	84 cf       	rjmp	.-248    	; 0x46c <__stack+0xd>
+ 58a:	81 30       	cpi	r24, 0x01	; 1
+ 58c:	09 f0       	breq	.+2      	; 0x590 <__stack+0x131>
+ 58e:	6e cf       	rjmp	.-292    	; 0x46c <__stack+0xd>
 					{
 						closeDoor();
- 564:	0e 94 db 01 	call	0x3b6	; 0x3b6 <closeDoor>
+ 590:	0e 94 db 01 	call	0x3b6	; 0x3b6 <closeDoor>
 						setPutCodeCodeMode(&my_codeMode);
- 568:	88 eb       	ldi	r24, 0xB8	; 184
- 56a:	90 e0       	ldi	r25, 0x00	; 0
- 56c:	0e 94 01 02 	call	0x402	; 0x402 <setPutCodeCodeMode>
- 570:	7d cf       	rjmp	.-262    	; 0x46c <__stack+0xd>
+ 594:	8c ed       	ldi	r24, 0xDC	; 220
+ 596:	90 e0       	ldi	r25, 0x00	; 0
+ 598:	0e 94 01 02 	call	0x402	; 0x402 <setPutCodeCodeMode>
+ 59c:	67 cf       	rjmp	.-306    	; 0x46c <__stack+0xd>
 					break;
 				}
 
 				default: // put code
 				{
 					if(my_codeMode == putCode)
- 572:	90 91 b8 00 	lds	r25, 0x00B8
- 576:	91 11       	cpse	r25, r1
- 578:	79 cf       	rjmp	.-270    	; 0x46c <__stack+0xd>
+ 59e:	90 91 dc 00 	lds	r25, 0x00DC
+ 5a2:	91 11       	cpse	r25, r1
+ 5a4:	63 cf       	rjmp	.-314    	; 0x46c <__stack+0xd>
 					{
 						if(witchNumber < 4)
- 57a:	e0 91 ae 00 	lds	r30, 0x00AE
- 57e:	e4 30       	cpi	r30, 0x04	; 4
- 580:	08 f0       	brcs	.+2      	; 0x584 <__stack+0x125>
- 582:	74 cf       	rjmp	.-280    	; 0x46c <__stack+0xd>
+ 5a6:	e0 91 d2 00 	lds	r30, 0x00D2
+ 5aa:	e4 30       	cpi	r30, 0x04	; 4
+ 5ac:	08 f0       	brcs	.+2      	; 0x5b0 <__stack+0x151>
+ 5ae:	5e cf       	rjmp	.-324    	; 0x46c <__stack+0xd>
 						{
 							writeCode[witchNumber++] = key;
- 584:	91 e0       	ldi	r25, 0x01	; 1
- 586:	9e 0f       	add	r25, r30
- 588:	90 93 ae 00 	sts	0x00AE, r25
- 58c:	f0 e0       	ldi	r31, 0x00	; 0
- 58e:	e7 54       	subi	r30, 0x47	; 71
- 590:	ff 4f       	sbci	r31, 0xFF	; 255
- 592:	80 83       	st	Z, r24
+ 5b0:	91 e0       	ldi	r25, 0x01	; 1
+ 5b2:	9e 0f       	add	r25, r30
+ 5b4:	90 93 d2 00 	sts	0x00D2, r25
+ 5b8:	f0 e0       	ldi	r31, 0x00	; 0
+ 5ba:	e3 52       	subi	r30, 0x23	; 35
+ 5bc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5be:	80 83       	st	Z, r24
 							LCD_WriteText("*");
- 594:	86 ea       	ldi	r24, 0xA6	; 166
- 596:	90 e0       	ldi	r25, 0x00	; 0
- 598:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
- 59c:	67 cf       	rjmp	.-306    	; 0x46c <__stack+0xd>
+ 5c0:	8b ec       	ldi	r24, 0xCB	; 203
+ 5c2:	90 e0       	ldi	r25, 0x00	; 0
+ 5c4:	0e 94 79 00 	call	0xf2	; 0xf2 <LCD_WriteText>
+ 5c8:	51 cf       	rjmp	.-350    	; 0x46c <__stack+0xd>
 
-0000059e <_exit>:
- 59e:	f8 94       	cli
+000005ca <_exit>:
+ 5ca:	f8 94       	cli
 
-000005a0 <__stop_program>:
- 5a0:	ff cf       	rjmp	.-2      	; 0x5a0 <__stop_program>
+000005cc <__stop_program>:
+ 5cc:	ff cf       	rjmp	.-2      	; 0x5cc <__stop_program>
