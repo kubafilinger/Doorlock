@@ -84,14 +84,14 @@ void moveServo()
 		if(my_servo.servo_time == SERVO_MIN)
 			_delay_us(200);
 		else
-			_delay_us(1000);
+			_delay_us(1400);
 		
 		PORTB &= ~(1 << SERVO_PIN);
 		
 		if(my_servo.servo_time == SERVO_MIN)
-			_delay_us(20000 - 200);
+			_delay_us(18000 - 1200);
 		else
-			_delay_us(20000 - 1000);
+			_delay_us(18000 - 3000);
 	}
 }
 
